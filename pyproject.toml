@@ -1,0 +1,21 @@
+[project]
+name = "img10"
+version = "0.1.0"
+description = "Temporary image hosting service"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.116.1",
+    "jinja2>=3.1.6",
+    "pillow>=11.3.0",
+    "pydantic>=2.11.7",
+    "python-multipart>=0.0.20",
+    "slowapi>=0.1.9",
+    "uvicorn>=0.35.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.10",
+    "ty>=0.0.1a19",
+]
