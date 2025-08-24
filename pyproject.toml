@@ -1,21 +1,85 @@
 [project]
-name = "img10"
-version = "0.1.0"
+dependencies = [
+  "fastapi>=0.116.1",
+  "jinja2>=3.1.6",
+  "pillow>=11.3.0",
+  "pydantic>=2.11.7",
+  "python-multipart>=0.0.20",
+  "slowapi>=0.1.9",
+  "uvicorn>=0.35.0",
+]
 description = "Temporary image hosting service"
+name = "img10"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "fastapi>=0.116.1",
-    "jinja2>=3.1.6",
-    "pillow>=11.3.0",
-    "pydantic>=2.11.7",
-    "python-multipart>=0.0.20",
-    "slowapi>=0.1.9",
-    "uvicorn>=0.35.0",
-]
+version = "0.1.0"
 
 [dependency-groups]
 dev = [
-    "ruff>=0.12.10",
-    "ty>=0.0.1a19",
+  "ruff>=0.12.10",
+  "safety>=3.2.9",
+  "ty>=0.0.1a19",
 ]
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.flake8-quotes]
+# Don't bother trying to avoid escaping quotes
+avoid-escape = true
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.lint.pylint]
+allow-magic-value-types = []
+max-args = 7
+max-branches = 15
+max-returns = 7
+max-statements = 50
+
+[tool.ruff.lint.pydocstyle]
+# Use Google-style docstrings.
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 7
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+no-lines-before = ["future", "standard-library"]
+order-by-type = true
+relative-imports-order = "closest-to-furthest"
+
+[tool.ruff.lint.flake8-type-checking]
+# Enforce type hints on all code.
+strict = true
+
+# autoflake configuration
+# ------------------------------------------------------------------------------
+[tool.autoflake]
+expand-star-imports = true
+in-place = true
+remove-all-unused-imports = true
+remove-duplicate-keys = true
+remove-unused-variables = true
+
+[tool.ty.rules]
+# ty configuration:
+# https://github.com/astral-sh/ty/tree/main/docs
+possibly-unresolved-reference = "warn"
+
+[tool.ty.environment]
+python-version = "3.13"

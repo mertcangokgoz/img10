@@ -1,1 +1,1 @@
-# Core Module
+"""Core functionality package."""

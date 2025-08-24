@@ -1,1 +1,1 @@
-# Watermark API Application
+"""Image upload and sharing application package."""

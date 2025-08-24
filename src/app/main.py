@@ -1,15 +1,16 @@
-"""Image upload and sharing service"""
+"""Image upload and sharing service."""
 
 from fastapi import FastAPI
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
+from src.app.api.routes import router
 from src.app.core.config import THUMBNAIL_DIR, UPLOAD_DIR
-
-from .api.routes import router
+from src.app.core.constants import APP_DESCRIPTION, APP_TITLE
 
 # Rate limiting configuration
 limiter = Limiter(key_func=get_remote_address)
@@ -19,9 +20,12 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 THUMBNAIL_DIR.mkdir(exist_ok=True)
 
 app = FastAPI(
-    title="img10 - Temporary Image Hosting",
-    description="Temporary image hosting service",
+    title=APP_TITLE,
+    description=APP_DESCRIPTION,
 )
+
+# Add middleware for proper HTTPS handling
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["*"])
 
 # Add rate limiting to app
 app.state.limiter = limiter
