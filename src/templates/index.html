@@ -1,134 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Temporary Image Hosting</title>
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-        <link rel="shortcut icon" href="/favicon.ico"/>
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <style type="text/css" media="screen">
-            body {
-                text-align: center;
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Temporary Image Hosting</title>
+    <meta name="description"
+        content="A simple temporary image hosting service. Upload your images and get a link that lasts for a day." />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" type="text/css"
+        media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+        type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            text-align: center;
+        }
+
+        @media screen and (min-width: 35.5em) {
+            div.main {
+                padding-top: 120px;
             }
-            @media screen and (min-width: 35.5em) {
-                div.main {
-                    padding-top: 120px;
-                }
-            }
-            .img-ten-upload-card.mdl-card {
-                margin: 0 auto;
-                width: 100%;
-                max-width: 512px;
-                text-align: left;
-            }
-            .img-ten-upload-card > .mdl-card__title {
-                color: #fff;
-                height: 176px;
-                background: url('/static/img10.png') bottom right 5% no-repeat #3E4EB8;
-            }
-            .img-ten-upload-card > .mdl-card__menu {
-                color: #fff;
-            }
-            .uploaded-image {
-                max-width: 100%;
-                height: auto;
-                border-radius: 4px;
-                margin: 10px 0;
-            }
-            .image-url {
-                word-break: break-all;
-                background: #f5f5f5;
-                padding: 10px;
-                border-radius: 4px;
-                margin: 10px 0;
-                font-family: monospace;
-                font-size: 12px;
-            }
-            .error-message {
-                color: #f44336;
-                background: #ffebee;
-                padding: 10px;
-                border-radius: 4px;
-                margin: 10px 0;
-            }
-            .success-message {
-                color: #4caf50;
-                background: #e8f5e8;
-                padding: 10px;
-                border-radius: 4px;
-                margin: 10px 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="main">
-            <div class="img-ten-upload-card mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title">
-                    <h1 class="mdl-card__title-text">Temporary Image Hosting</h1>
-                </div>
-                <div class="mdl-card__supporting-text" id="content-area">
-                    <p>Your image will be hosted for a day and will be removed.</p>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <input type="file" id="file-input" accept=".jpg,.jpeg,.png" style="display: none;">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="upload-button">
-                        <i class="fa fa-upload"></i> Upload Image
-                    </button>
-                    <div id="upload-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
-                </div>
-                <div class="mdl-card__menu">
-                    <a href="https://github.com/mertcangokgoz/img10" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                        <i class="fa fa-github" aria-hidden="true"></i>
-                    </a>
-                </div>
+        }
+
+        .img-ten-upload-card.mdl-card {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 512px;
+            text-align: left;
+        }
+
+        .img-ten-upload-card>.mdl-card__title {
+            color: #fff;
+            height: 176px;
+            background: url('/static/img10.png') bottom right 5% no-repeat #3E4EB8;
+        }
+
+        .img-ten-upload-card>.mdl-card__menu {
+            color: #fff;
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .image-url {
+            word-break: break-all;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .error-message {
+            color: #f44336;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .success-message {
+            color: #4caf50;
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="img-ten-upload-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h1 class="mdl-card__title-text">Temporary Image Hosting</h1>
+            </div>
+            <div class="mdl-card__supporting-text" id="content-area">
+                <p>Your image will be hosted for a day and will be removed.</p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <input type="file" id="file-input" accept=".jpg,.jpeg,.png" style="display: none;">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                    id="upload-button">
+                    <i class="fa fa-upload"></i> Upload Image
+                </button>
+                <div id="upload-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"
+                    style="display: none;"></div>
+            </div>
+            <div class="mdl-card__menu">
+                <a href="https://github.com/mertcangokgoz/img10"
+                    class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <script type="text/javascript">
-            const uploadButton = document.getElementById('upload-button');
-            const fileInput = document.getElementById('file-input');
-            const uploadProgress = document.getElementById('upload-progress');
-            const contentArea = document.getElementById('content-area');
+    <script type="text/javascript">
+        const uploadButton = document.getElementById('upload-button');
+        const fileInput = document.getElementById('file-input');
+        const uploadProgress = document.getElementById('upload-progress');
+        const contentArea = document.getElementById('content-area');
 
-            // Click to upload
-            uploadButton.addEventListener('click', () => {
-                fileInput.click();
-            });
+        // Click to upload
+        uploadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
 
-            fileInput.addEventListener('change', (e) => {
-                if (e.target.files.length > 0) {
-                    uploadFile(e.target.files[0]);
-                }
-            });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                uploadFile(e.target.files[0]);
+            }
+        });
 
-            function uploadFile(file) {
-                // Only allow jpeg, jpg, and png files
-                if (file.type !== 'image/jpeg' && file.type !== 'image/jpg' && file.type !== 'image/png') {
-                    showError('Only jpeg, jpg, and png files are allowed.');
-                    return;
-                }
+        function uploadFile(file) {
+            // Only allow jpeg, jpg, and png files
+            if (file.type !== 'image/jpeg' && file.type !== 'image/jpg' && file.type !== 'image/png') {
+                showError('Only jpeg, jpg, and png files are allowed.');
+                return;
+            }
 
-                if (file.size > 10 * 1024 * 1024) {
-                    showError('File size must be less than 10MB.');
-                    return;
-                }
+            if (file.size > 10 * 1024 * 1024) {
+                showError('File size must be less than 10MB.');
+                return;
+            }
 
-                // Show progress
-                uploadButton.style.display = 'none';
-                uploadProgress.style.display = 'block';
-                contentArea.innerHTML = '<p>Uploading...</p>';
+            // Show progress
+            uploadButton.style.display = 'none';
+            uploadProgress.style.display = 'block';
+            contentArea.innerHTML = '<p>Uploading...</p>';
 
-                // Create FormData
-                const formData = new FormData();
-                formData.append('file', file);
+            // Create FormData
+            const formData = new FormData();
+            formData.append('file', file);
 
-                // Upload to API
-                fetch('/upload', {
-                    method: 'POST',
-                    body: formData
-                })
+            // Upload to API
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -147,13 +164,13 @@
                     uploadProgress.style.display = 'none';
                     fileInput.value = '';
                 });
-            }
+        }
 
-            function showSuccess(data) {
-                const imageUrl = data.img_url;
-                const thumbnailUrl = data.thumbnail_url;
-                
-                contentArea.innerHTML = `
+        function showSuccess(data) {
+            const imageUrl = data.img_url;
+            const thumbnailUrl = data.thumbnail_url;
+
+            contentArea.innerHTML = `
                     <div class="success-message">
                         <i class="fa fa-check-circle"></i> Image uploaded successfully!
                     </div>
@@ -177,30 +194,31 @@
                         </button>
                     </div>
                 `;
-            }
+        }
 
-            function showError(message) {
-                contentArea.innerHTML = `
+        function showError(message) {
+            contentArea.innerHTML = `
                     <div class="error-message">
                         <i class="fa fa-exclamation-circle"></i> ${message}
                     </div>
                     <p>Your image will be hosted for a day and will be removed.</p>
                 `;
-            }
+        }
 
-            function copyToClipboard(text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    // Show a brief success message
-                    const button = event.target.closest('button');
-                    const originalIcon = button.innerHTML;
-                    button.innerHTML = '<i class="fa fa-check"></i>';
-                    setTimeout(() => {
-                        button.innerHTML = originalIcon;
-                    }, 1000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            }
-        </script>
-    </body>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show a brief success message
+                const button = event.target.closest('button');
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fa fa-check"></i>';
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 1000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+
 </html>

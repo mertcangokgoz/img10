@@ -6,6 +6,10 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
+    volumes:
+      - img10_uploads:/app/uploads
+      - img10_thumbnails:/app/thumbnails
+      - img10_database:/app/images.db
     networks:
       - app-network
     deploy:
@@ -46,3 +50,11 @@ networks:
   app-network:
     driver: overlay
     attachable: true
+
+volumes:
+  img10_uploads:
+    driver: local
+  img10_thumbnails:
+    driver: local
+  img10_database:
+    driver: local
